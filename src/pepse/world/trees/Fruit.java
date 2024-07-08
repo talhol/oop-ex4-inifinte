@@ -18,7 +18,7 @@ public class Fruit extends FloraGameObject {
     private static final Color FRUIT_COLOR = new Color(107, 19, 189);
     private static final String FRUIT_TAG = "fruit";
     private Consumer<GameObject> collisionCallback;
-    private final int RANDOM_COLOR_BOUND = 256;
+    private static final int RANDOM_COLOR_BOUND = 256;
 
     /**
      * Constructor for the Fruit class.
@@ -28,7 +28,7 @@ public class Fruit extends FloraGameObject {
     public Fruit(Vector2 fruitTopLeft) {
         super(fruitTopLeft.subtract(Vector2.DOWN.mult(FRUIT_SIZE)),
                 Vector2.ONES.mult(FRUIT_SIZE),
-                new OvalRenderable(FRUIT_COLOR));
+                new OvalRenderable(createRandomFruitColor()));
         this.physics().setMass(GameObjectPhysics.IMMOVABLE_MASS);
         this.setTag(FRUIT_TAG);
     }
@@ -41,6 +41,13 @@ public class Fruit extends FloraGameObject {
      */
     public void setCollisionCallback(Consumer<GameObject> collisionCallback) {
         this.collisionCallback = collisionCallback;
+    }
+
+    private static Color createRandomFruitColor() {
+        Random random = new Random();
+        return new Color(random.nextInt(RANDOM_COLOR_BOUND),
+                random.nextInt(RANDOM_COLOR_BOUND),
+                random.nextInt(RANDOM_COLOR_BOUND));
     }
 
     @Override
@@ -56,9 +63,7 @@ public class Fruit extends FloraGameObject {
         Random random = new Random();
         return () -> {
             this.renderer().setRenderable(new OvalRenderable(
-                    new Color(random.nextInt(RANDOM_COLOR_BOUND),
-                    random.nextInt(RANDOM_COLOR_BOUND),
-                    random.nextInt(RANDOM_COLOR_BOUND))));
+                    createRandomFruitColor()));
         };
     }
 }
