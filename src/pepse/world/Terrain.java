@@ -17,7 +17,7 @@ import java.util.List;
 public class Terrain {
     private float groundHeightAtX0;
     private static final Color BASE_GROUND_COLOR = new Color(212, 123, 74);
-    private static final int TERRAIN_DEPTH = 30; // The depth of the terrain in blocks
+    private static final int TERRAIN_DEPTH = 24; // The depth of the terrain in blocks
     private static final String GROUND_TAG = "ground"; // Tag for ground blocks
     private static final float GROUND_HEIGHT_RATIO = 2.0f / 3.0f; // Ratio to calculate initial ground height
     private static final int NOISE_SCALE_FACTOR = 7; // Scale factor for noise generation
