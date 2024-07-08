@@ -61,6 +61,10 @@ public class PepseGameManager extends GameManager {
                 LayerManager.getLayer(LayerManager.GameLayer.AVATAR),
                 LayerManager.getLayer(LayerManager.GameLayer.FRUIT),
                 true);
+        gameObjects().layers().shouldLayersCollide(
+                LayerManager.getLayer(LayerManager.GameLayer.AVATAR),
+                LayerManager.getLayer(LayerManager.GameLayer.TERRAIN),
+                true);
 
         createSky(gameObjects, windowDimensions);
         terrain = new Terrain(windowDimensions, SEED);
