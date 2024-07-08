@@ -1,0 +1,52 @@
+talhol
+207162421
+
+1. Classes in the Package:
+
+FloraGameObject:
+Base class for all flora-related game objects (trees, flowers, fruits).
+Extends a generic game object class and includes common properties and methods for flora objects.
+
+Tree:
+This class represents a tree in the game world.
+It includes methods to generate tree trunks and branches and handles the overall structure of a tree.
+It can generate flowers and fruits as part of its structure.
+
+Fruit:
+Represents a fruit object that can be attached to trees.
+Includes properties specific to fruits, such as ripeness.
+Handles interactions with other game objects (e.g., being collected by the avatar).
+
+Flora:
+This class is responsible for generating and managing flora within a specified range.
+It can create trees and manage their placement in the game world.
+
+Flower:
+This class represents a flower, a type of flora game object.
+It includes specific properties and behaviors for flowers, 
+such as their color, size, and response to environmental changes (e.g., wind, player interaction).
+
+2. Connections Between Classes:
+Flora class Manages the creation of trees and flowers within a specified range. 
+It uses the Tree and Flower classes to create these objects.
+Tree class Generates its structure, including trunks, branches, flowers, and fruits. 
+It uses the Fruit and Flower classes to create these components.
+Fruit and Flower are specific types of flora game objects that can be attached to trees. 
+They inherit common behaviors from FloraGameObject.
+The handleFruitCollision callback function in the PepseGameManager class is used to manage 
+the interactions between the avatar and the fruit objects.
+By using the handleFruitCollision function in this way, the collision handling logic is neatly 
+encapsulated, making the code easier to manage, extend, and understand.
+In addition, the Terrain class provides a public method groundHeightAt(float x) that returns the 
+ground height at a specific x-coordinate. This method serves as a clear and simple interface for other 
+classes to use without needing to understand the internal workings of the terrain generation.
+The Tree class and other classes in the Tree package use this method to determine where trees and plants should be placed.
+
+3. Design Patterns Used:
+Factory Pattern: The Flora class acts as a factory for creating trees and their components (flowers and fruits). 
+It encapsulates the creation logic and provides a unified interface for generating flora objects.
+Composite Pattern: The Tree class uses a composite pattern to manage its components (trunks, branches, flowers, and fruits). 
+This allows treating the whole tree structure as a single object while managing its parts individually.
+Observer Pattern: The Flower class uses scheduled tasks and transitions 
+to respond to environmental changes and player interactions. 
+These scheduled tasks act as observers that trigger specific behaviors at predefined times.
